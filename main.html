@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Bmi Caluculator
+        </title>
+        <style>
+            body{
+                background-image: url('https://c8.alamy.com/comp/2GGJXN1/bmi-and-weight-loss-banner-background-2GGJXN1.jpg');
+                background-size: cover;
+                transition: background-image 3s ease-in-out;
+                
+            }
+            input[type="tel"],
+            input[type="submit"]
+            
+            {
+                width: 300px;
+                height: 20px;
+                padding: 5px;
+                border: 5px solid rgb(37, 37, 38);
+                border-style: inset;
+                
+            }
+            .image-container{
+                padding: 10px;
+                float:right;
+            }
+          
+         
+            .image2-container{
+                float: left;
+                padding: 2px;
+            }
+            .header-container {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+        .center {
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            flex-direction: column;
+            text-align: center;
+        }
+        .placement-button {
+            text-align: right;
+            
+            padding: 10px 20px;
+        }
+            
+          
+        </style>
+    </head>
+    <body>
+        <p class="header-container,center"  style="text-align: center; font-size: 34px; color: chartreuse;">
+            <u>BMI Caluculator</u>
+            <div class="placement-button">
+                <a href="login.html"><button style="font-size: 20px; width: 100px; border: 4px solid rgb(10, 247, 247);   border-style: outset; ">HOME</button></a>
+            </div>
+        </p>
+        <div style="font-size: 25px; color: rgb(225, 255, 0);">
+            The BMI is expressed in kg/m2, resulting from mass in kilograms and height in metres. If pounds and inches are used, a conversion factor of 703 (kg/m2)/(lb/in2) is applied. When the term BMI is used informally, the units are usually omitted.
+            
+            <br>
+            <div class="image-container" >
+                <img src="https://www.pnbmetlife.com/content/dam/pnb-metlife/images/icons/bmi-calculator/meter.png" width="400px" height="300px">
+            </div>
+             <p style="font-size: 30px; color: rgb(20, 220, 255); text-align: center;">BMI=weight(kg)/(height(m))^2</p>;
+        </div>
+     
+        <form action="result.html"  method="get" onsubmit="calc(event)" style="text-align: center;">
+           
+            <select style="font-size: 22px; width: 200px;color: rgb(43, 0, 255); border: 2px solid black; border-color: rgb(21, 0, 255); text-align: center;">
+                <option>MALE</option>
+                <option>FEMALE</option>
+        
+               </select>
+               <br>
+               <BR>           
+            <input type="tel" placeholder="Height(m)" id="height">
+            <br>
+            
+            <input type="tel" placeholder="weight(kg)" id="weight">
+            <br>
+            <BR>
+        
+            <button style="font-size: 20px; border: 4px solid rgb(77, 52, 240); border-style: outset;" type="submit">submit</button>
+            <button style="font-size: 20px; border: 4px solid rgb(43, 214, 27); border-style: outset;" type="reset">Reset</button>
+        </form>
+        <div class="image2-container">
+        <img style="padding: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnxtYbwEVTHv0YV_zfhsaBz0P-MFRu3fMW3w&usqp=CAU" width="450px" height="170px">  
+        <img style="padding: 30px;" src="https://cdn2.vectorstock.com/i/1000x1000/34/46/colorful-caricature-thin-boy-in-clothes-vector-16103446.jpg" width="300px" height="170px">
+        <img style="padding: 30px; " src="" id="image" width="350px" height="170px">
+    
+        </div>
+    
+    </body>
+    <script>
+        function calc(event)
+        {
+            event.preventDefault();
+            var height=parseFloat(document.getElementById("height").value);
+            var weight=parseFloat(document.getElementById("weight").value);
+            var z= weight/(height*height);
+            
+            window.location.href='result.html?bmi='+z;
+        }
+        let image=document.getElementById("image");
+        let images=['https://images.hindustantimes.com/img/2023/02/02/1600x900/bridge_pose_1649151321688_1675311140766_1675311140766.jpg','https://img.mensxp.com/media/content/2020/Mar/Easy-Asanas-To-Get-Started-With-Yoga1200_5e8363fd0fdce.jpeg','https://st4prdbebeautiful4s4ci.blob.core.windows.net/www-bebeautiful-in/5-anti-ageing-yoga-asanas-to-tighten-your-skin_1.jpg?w=300','https://articles-1mg.gumlet.io/articles/wp-content/uploads/2019/01/yoga-asana-for-weight-loss.jpg?compress=true&quality=80&w=640&dpr=2.6','https://images.indianexpress.com/2023/01/Untitled-design-2023-01-14T153220.456.jpg?w=414']
+        setInterval(function(){
+            let random=Math.floor(Math.random()*5);
+            image.src= images[random]
+        },1000)
+        const images2=['https://c8.alamy.com/comp/2GGJXN1/bmi-and-weight-loss-banner-background-2GGJXN1.jpg','https://c8.alamy.com/comp/2PYDA76/handwriting-text-bmi-internet-concept-method-of-estimating-body-fat-levels-based-on-weight-and-height-2PYDA76.jpg','https://c8.alamy.com/comp/2M6BCEB/conceptual-display-bmi-word-for-method-of-estimating-body-fat-levels-based-on-weight-and-height-2M6BCEB.jpg','https://c8.alamy.com/comp/EM2YAP/acronym-bmi-body-mass-index-conceptual-image-with-yellow-paint-line-EM2YAP.jpg'];
+            let index=0;
+             function changebackground(){
+                document.body.style.backgroundImage=`url(${images2[index]})`;
+                index=(index+1)%images2.length;
+             }
+             setInterval(changebackground,4000); 
+
+        
+    </script>
+</html>
